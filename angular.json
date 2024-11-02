@@ -25,6 +25,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            
             "outputPath": "dist/071-ej-mean",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -38,10 +39,11 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [],
-            "customWebpackConfig": {
-              "path": "./webpack.config.js"
-            }
+            "scripts": []
+          
+          
+
+            
           },
           "configurations": {
             "production": {

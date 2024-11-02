@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TareaListaComponent } from './tarea-lista.component';
 
 describe('TareaListaComponent', () => {
@@ -8,10 +7,11 @@ describe('TareaListaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TareaListaComponent]
-    })
-    .compileComponents();
-    
+      declarations: [TareaListaComponent],
+    }).compileComponents();
+  });
+
+  beforeEach(() => {
     fixture = TestBed.createComponent(TareaListaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

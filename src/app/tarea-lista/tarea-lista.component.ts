@@ -20,5 +20,10 @@ ngOnInit(): void {
   
 
 }
+deleteTarea(id:string){
+  this.servicio.deleteTarea(id)
+  .subscribe(data=>{console.log(data),error=>console.log(error)});
+  
+}
 
 }

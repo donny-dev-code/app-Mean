@@ -1,5 +1,8 @@
+
 <div class="container">
     <div class="row">
+
+
         <div class="col-sm-12">
           <form class="form-inline">
              <fieldset class="form-group col-sm-11"></fieldset>
@@ -9,113 +12,37 @@
             <table class="table table-striped">
                 <thead>
                     <tr class="row">
-                        <th class="col-sm-6">Nombre</th>
+                        <th class="col-sm-2">Nombre</th>
+                        <th class="col-sm-1">Cantidad</th>
+                        <th class="col-sm-2">Descripción</th>
+                        <th class="col-sm-1">Fecha</th>
+                        <th class="col-sm-2">Estado</th>
+                        <th class="col-sm-1">Valor Unitario</th>
+                        <th class="col-sm-1">Valor Total</th>
+                       
                     </tr>
                 </thead>
+                
+
                 <tbody>
                     <tr *ngFor="let tarea of tareas$ | async" class="row">
                                                              
-                       <td class="col-sm-6"><i>{{tarea.nombre}}</i></td>
- 
+                       <td class="col-sm-2"><i>{{tarea.nombre}}</i></td>
+                       <td class="col-sm-1"><i>{{tarea.cantidad}}</i></td>
+                       <td class="col-sm-2"><i>{{tarea.descripcion}}</i></td>
+                       <td class="col-sm-1"><i>{{tarea.fecha | date:'yyyy-MM-dd'}}</i></td>
+                       <td class="col-sm-2"><i>{{tarea.estado}}</i></td>
+                       <td class="col-sm-1"><i>{{tarea.valorUnitario}}</i></td>
+                       <td class="col-sm-1"><i>{{tarea.valorTotal}}</i></td>
+                       <td class="col-sm-1"><a class="btn btn-info" [routerLink]="['/tareas',tarea._id,'edit']">Edit</a></td>
+                       <td class="col-sm-1"><a class="btn btn-danger" (click)="deleteTarea(tarea._id)">-</a></td>
                     </tr>
-                </tbody>
-                    //
-                    <thead>
-                        <tr class="row">
-                            <th class="col-sm-6">Cantidad</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let tarea of tareas$ | async" class="row">
-                                                                 
-                           <td class="col-sm-6"><i>{{tarea.cantidad}}</i></td>
-     
-                        </tr>
-                    </tbody>    
-                        //
-                    <thead>
-                      <tr class="row">
-                         <th class="col-sm-6">Descripción</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let tarea of tareas$ | async" class="row">
-                                                                     
-                         <td class="col-sm-6"><i>{{tarea.descripcion}}</i></td>
-         
-                      </tr>
-                    </tbody>
-                    //
-                    <thead>
-                        <tr class="row">
-                           <th class="col-sm-6">Fecha</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let tarea of tareas$ | async" class="row">
-                                                                       
-                           <td class="col-sm-6"><i>{{tarea.fecha}}</i></td>
-           
-                        </tr>
+              
                       </tbody>
-                      //
-                      <thead>
-                        <tr class="row">
-                           <th class="col-sm-6">Estado</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let tarea of tareas$ | async" class="row">
-                                                                       
-                           <td class="col-sm-6"><i>{{tarea.estado}}</i></td>
-           
-                        </tr>
-                      </tbody>
-                      //
-                      <thead>
-                        <tr class="row">
-                           <th class="col-sm-6">Valor Unitario</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let tarea of tareas$ | async" class="row">
-                                                                       
-                           <td class="col-sm-6"><i>{{tarea.valorUnitario}}</i></td>
-           
-                        </tr>
-                      </tbody>
-                      //
-                      <thead>
-                        <tr class="row">
-                           <th class="col-sm-6">Valor Total</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let tarea of tareas$ | async" class="row">
-                                                                       
-                           <td class="col-sm-6"><i>{{tarea.valorTotal}}</i></td>
-            
-                        </tr>
-                      </tbody>
-                      <tbody>
-                        <tr *ngFor="let tarea of tareas$ | async" class="row">
-                                                                       
-                           <td class="col-sm-1"><a class="btn btn-info" [routerLink]="['/tareas',tarea._id,'edit']">Edit</a></td>
-            
-                        </tr>
-                      </tbody>
-                      
-               <!-- public _id:string,
-                public nombre: string,
-                public cantidad:number,
-                public descripcion:string,
-                public fecha:Date,
-                public estado:TareaEstados,
-                public valorUnitario:number,
-                public valorTotal:number-->
-
+               
             </table>
         </div>
-    </div>
 
+
+    </div>
 </div>

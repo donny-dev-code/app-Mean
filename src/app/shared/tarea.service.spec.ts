@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { TareaService } from './tarea.service';
 
 describe('TareaService', () => {
@@ -13,4 +12,6 @@ describe('TareaService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  // Aquí puedes añadir más pruebas para los métodos del servicio
 });

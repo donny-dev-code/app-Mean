@@ -22,6 +22,9 @@ export class TareaService {
   return this.http.put<TareaModel>(`http://localhost:3000/api/tareas/${tarea._id}`, tarea);
 
   }
+  deleteTarea(id: string)
+  {return this.http.delete<string>(`http://localhost:3000/api/tareas/${id}`);
+}
   
   }
 

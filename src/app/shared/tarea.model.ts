@@ -1,8 +1,8 @@
 
     export enum TareaEstados{
-        Pago="pagó",
-        Enprogreso="En progreso",
-        Nohapagado="no ha pagado"
+        Pago="Pagó",
+        Abono="Abonó",
+        Nohapagado="No ha pagado"
         }
         export class TareaModel{
             constructor(
@@ -15,4 +15,5 @@
                 public valorUnitario:number,
                 public valorTotal:number
             ){}
+          
         }
