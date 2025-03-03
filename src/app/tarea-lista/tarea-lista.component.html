@@ -6,7 +6,7 @@
         <div class="col-sm-12">
           <form class="form-inline">
              <fieldset class="form-group col-sm-11"></fieldset>
-             <fieldset class="form-group col-sm-1"><a class="btn btn-primary" routerLink="['/tareas/new']">+</a></fieldset>
+             <fieldset class="form-group col-sm-1"><a class="btn btn-primary" [routerLink]="['/tareas/new']">+</a></fieldset>
           </form>
             <br>
             <table class="table table-striped">
@@ -34,8 +34,7 @@
                        <td class="col-sm-2"><i>{{tarea.estado}}</i></td>
                        <td class="col-sm-1"><i>{{tarea.valorUnitario}}</i></td>
                        <td class="col-sm-1"><i>{{tarea.valorTotal}}</i></td>
-            
-                       <td class="col-sm-1"><a class="btn btn-info" routerLink="[/tareas',tarea._id,'edit']">Edit</a></td>
+                       <td class="col-sm-1"><a class="btn btn-info" [routerLink]="['/tareas', tarea._id, 'edit']">Edit</a></td>
                        <td class="col-sm-1"><a class="btn btn-danger" (click)="deleteTarea(tarea._id)">-</a></td>
                     </tr>
               

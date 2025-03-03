@@ -2,16 +2,19 @@ var mongoose=require('mongoose');
 var Tarea=require('../models/tarea');
 const tarea = require('../routes/tarea');
 
-exports.list_all_tareas= function(req, res){  
-Tarea.find({})
-.then((tareas)=>{ 
- res.json(tareas);
-})
-.catch((err)=>{
-    console.error("Error al listar tareas:", err);
-    res.status(500).send(err);
-})
+exports.list_all_tareas = function(req, res) {  
+    Tarea.find({})
+    .then((tareas) => { 
+        console.log("Tareas obtenidas:", JSON.stringify(tareas, null, 2)); // Imprime en consola
+        res.json(tareas); // Envía la respuesta al frontend
+    })
+    .catch((err) => {
+        console.error("Error al listar tareas:", err);
+        res.status(500).send(err);
+    });
 };
+
+
 
 exports.create_tarea = async (req, res) => {
     try {
@@ -31,19 +34,30 @@ exports.create_tarea = async (req, res) => {
 
 //
 
-exports.read_tarea= function(req, res)
-{Tarea.findById(req.params.tareaId, function(err, tarea){
-}).then((tarea)=>{ 
+
+
+exports.read_tarea = async (req, res) => {
+  try {
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+      return res.status(400).json({ message: "ID inválido" });
+    }
+
+    const tarea = await Tarea.findById(req.params.id);
+    if (!tarea) {
+      return res.status(404).json({ message: "Tarea no encontrada" });
+    }
     res.json(tarea);
-   })
-   .catch((err)=>{
-       console.error("Error al listar tareas:", err);
-       res.status(500).send(err);
-   })
+  } catch (error) {
+    console.error("Error en read_tarea:", error);
+    res.status(500).json({ message: "Error en el servidor", error });
+  }
 };
 
+
 exports.update_tarea = function(req, res) {
-    Tarea.findOneAndUpdate({ _id: req.params.tareaId }, req.body, { new: true })
+    console.log("ID recibido:", req.params.id);
+    console.log("Datos recibidos:", req.body);
+    Tarea.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
         .then((tarea) => {
             if (!tarea) {
                 return res.status(404).json({ message: 'No se encontró ninguna tarea con ese ID' });
@@ -58,7 +72,7 @@ exports.update_tarea = function(req, res) {
 
 
 exports.delete_tarea = function(req, res) {
-    Tarea.deleteMany({ _id: req.params.tareaId })
+    Tarea.deleteMany({ _id: req.params.id })
         .then((result) => {
             if (result.deletedCount === 0) {
                 return res.status(404).json({ message: 'No se encontró ninguna tarea con ese ID' });

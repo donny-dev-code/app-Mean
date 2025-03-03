@@ -16,7 +16,7 @@ describe('TareaService', () => {
     
   });
 
-  it('should  create', () => {
+  it('servicio creado', () => {
     expect(service).toBeTruthy();
   });
 

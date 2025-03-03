@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterModule } from '@angular/router';
-import { TareaModel, TareaEstados } from '../shared/tarea.model';
+import { TareaEstados } from '../shared/tarea.model';
 import { FormsModule } from '@angular/forms';
 
 describe('EditTareaComponent', () => {
@@ -27,10 +27,9 @@ describe('EditTareaComponent', () => {
       declarations: [EditTareaComponent],
       providers: [
         { provide: TareaService, useValue: tareaServiceSpy },
-        { provide: Router, useValue: routerSpy },
+        { provide: Router},
         {
-          provide: ActivatedRoute,
-          useValue: {
+          provide: ActivatedRoute,  useValue: {
             paramMap: of({
               get: (key: string) => key === 'id' ? '1' : null
             })
@@ -39,7 +38,7 @@ describe('EditTareaComponent', () => {
       ]
     }).compileComponents();
     const MOCK_TAREA = {
-      _id: "1",
+      _id: "2",
       nombre: "Ejemplo Tarea",
       cantidad: 5,
       descripcion: "Descripción",
@@ -49,7 +48,6 @@ describe('EditTareaComponent', () => {
       valorTotal: 500
     };
     
-
     // Configurar el espía para devolver un objeto de tarea de ejemplo
     tareaServiceSpy.getTarea.and.returnValue(of(MOCK_TAREA));
   });
@@ -57,15 +55,15 @@ describe('EditTareaComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EditTareaComponent);
     component = fixture.componentInstance;
+     fixture.detectChanges();  // Ejecuta el ciclo de cambio para inicializar el componente
   });
 
   it('debe inicializar tarea con datos de getTarea cuando hay un id en la ruta', fakeAsync(() => {
-    fixture.detectChanges(); // Ejecuta el ciclo de cambio para inicializar el componente
     tick(); // Simula el paso del tiempo y completa la suscripción
-    expect(component.tarea.nombre).toBe('Ejemplo Tarea');
+    expect(component.tarea.nombre).toEqual('Ejemplo Tarea');
   }));
 
-  it('should create', () => {
+  it('componente creado', () => {
     expect(component).toBeTruthy();
   });
 });

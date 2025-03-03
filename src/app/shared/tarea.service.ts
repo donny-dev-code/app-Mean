@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TareaModel } from './tarea.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +13,10 @@ export class TareaService {
   getAllTareas(){
     return this.http.get<TareaModel[]>('http://localhost:3000/api/tareas');
   }
-  getTarea(id:string){
-    return this.http.get<TareaModel>(`{http://localhost:3000/api/tareas}/${id}`);
+  getTarea(id: string): Observable<TareaModel> {
+    return this.http.get<TareaModel>(`http://localhost:3000/api/tareas/${id}`);
   }
+  
   addTarea(tarea:TareaModel){
     return this.http.post<TareaModel>('http://localhost:3000/api/tareas',tarea);
   }

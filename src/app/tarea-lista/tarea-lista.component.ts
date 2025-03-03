@@ -10,7 +10,7 @@ import { TareaService } from '../shared/tarea.service';
   styleUrl: './tarea-lista.component.css'
 })
 export class TareaListaComponent implements OnInit{
-
+titulo="Pruebas unitarias";
 tareas$: Observable<TareaModel[]>;
 
 constructor(private servicio:TareaService){
@@ -23,7 +23,6 @@ ngOnInit(): void {
 }
 deleteTarea(id:string){
   this.servicio.deleteTarea(id)
-
   .subscribe({
     next: () => {
       console.log(`Tarea ${id} eliminada`);

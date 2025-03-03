@@ -19,12 +19,26 @@ describe('TareaListaComponent', () => {
     await TestBed.configureTestingModule({
       imports:[HttpClientTestingModule],
       providers:[
-        { provide: TareaService, useValue: { getAllTareas: () => of([]) }},
+        { provide: TareaService, useValue: tareaServiceSpy},
       ],
       declarations: [TareaListaComponent],
     }).compileComponents();
+    const MOCK_TAREA =[{
+      _id: "1",
+      nombre: "Ejemplo Tarea",
+      cantidad: 5,
+      descripcion: "Descripción",
+      fecha: new Date(),
+      estado: TareaEstados.Pago,
+      valorUnitario: 100,
+      valorTotal: 500
+    }];
+    
+
+    // Configurar el espía para devolver un objeto de tarea de ejemplo
+    tareaServiceSpy.getAllTareas.and.returnValue(of(MOCK_TAREA));
   });
-  it('should crear una instancia de TareaModel', () => {
+  it('crear una instancia de TareaModel', () => {
     const tarea = new TareaModel(
       '1',
       'Tarea de ejemplo',
@@ -42,13 +56,14 @@ describe('TareaListaComponent', () => {
     // Crear el componente y disparar la detección de cambios
     fixture = TestBed.createComponent(TareaListaComponent);
     component = fixture.componentInstance;
-    // Simular la respuesta de getAllTareas
-    tareaServiceSpy.getAllTareas.and.returnValue(of([])); // Simula una respuesta vacía
     fixture.detectChanges();
   });
 
-it('should  create', () => {
-    expect(TareaListaComponent).toBeTruthy();
+it('componente creado', () => {
+    expect(component).toBeTruthy();
+  });
+  it('Tengo titulo', () => {
+    expect(component.titulo).toEqual("Pruebas unitarias");
   });
  
 });

@@ -1,13 +1,13 @@
-module.exports= (app)=>{
-    var tareaCtrl=require('../controllers/tarea');
+const express = require("express");
+const router = express.Router();
+const tareaController = require("../controllers/tarea");
 
-    app.route('/api/tareas')
-    .get(tareaCtrl.list_all_tareas)
-    .post(tareaCtrl.create_tarea);
 
-    app.route('/api/tareas/:tareaId')
-    .get(tareaCtrl.read_tarea)
-    .put(tareaCtrl.update_tarea)
-    .delete(tareaCtrl.delete_tarea);
+// Definir las rutas
+router.get("/", tareaController.list_all_tareas);
+router.post("/", tareaController.create_tarea);
+router.get("/:id", tareaController.read_tarea);
+router.put("/:id", tareaController.update_tarea);
+router.delete("/:id", tareaController.delete_tarea);
 
-}
+module.exports = router;
