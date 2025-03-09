@@ -21,7 +21,7 @@ app.use(express.static(path.join(__dirname, '../dist/071-ej-mean')));
 
 //cfg de las rutas
 
-app.use("/api/tareas/", tareaRoutes);
+app.use("/api/tareas/wear/mean", tareaRoutes);
 
  // cfg del puerto de escucha
  const port= process.env.PORT || '3000';

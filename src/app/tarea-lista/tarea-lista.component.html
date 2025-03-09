@@ -1,48 +1,50 @@
 
-<div class="container">
-    <div class="row">
-
-
-        <div class="col-sm-12">
-          <form class="form-inline">
-             <fieldset class="form-group col-sm-11"></fieldset>
-             <fieldset class="form-group col-sm-1"><a class="btn btn-primary" [routerLink]="['/tareas/new']">+</a></fieldset>
-          </form>
+          
+            <div class="container">
+                <div class="d-flex justify-content-end">
+                <button class="btn btn-primary mr-5">
+                    <a [routerLink]="['/tareas/wear/mean/new']">+</a>
+                </button>
+              </div>
+            </div>
+        
             <br>
+            <div class="container">
+                  
+            <div class="table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl">     
             <table class="table table-striped">
                 <thead>
-                    <tr class="row">
-                        <th class="col-sm-2">Nombre</th>
-                        <th class="col-sm-1">Cantidad</th>
-                        <th class="col-sm-2">Descripción</th>
-                        <th class="col-sm-1">Fecha</th>
-                        <th class="col-sm-2">Estado</th>
-                        <th class="col-sm-1">Valor Unitario</th>
-                        <th class="col-sm-1">Valor Total</th>
-                       
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Descripción</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
+                        <th>Valor Unitario</th>
+                        <th>Valor Total</th>
                     </tr>
                 </thead>
-                
-
                 <tbody>
-                    <tr *ngFor="let tarea of tareas$ | async" class="row">
+                    <tr *ngFor="let tarea of tareas$ | async">
                                                              
-                       <td class="col-sm-2"><i>{{tarea.nombre}}</i></td>
-                       <td class="col-sm-1"><i>{{tarea.cantidad}}</i></td>
-                       <td class="col-sm-2"><i>{{tarea.descripcion}}</i></td>
-                       <td class="col-sm-1"><i>{{tarea.fecha | date:'yyyy-MM-dd'}}</i></td>
-                       <td class="col-sm-2"><i>{{tarea.estado}}</i></td>
-                       <td class="col-sm-1"><i>{{tarea.valorUnitario}}</i></td>
-                       <td class="col-sm-1"><i>{{tarea.valorTotal}}</i></td>
-                       <td class="col-sm-1"><a class="btn btn-info" [routerLink]="['/tareas', tarea._id, 'edit']">Edit</a></td>
-                       <td class="col-sm-1"><a class="btn btn-danger" (click)="deleteTarea(tarea._id)">-</a></td>
+                       <td><em>{{tarea.nombre}}</em></td>
+                       <td>{{tarea.cantidad}}</td>
+                       <td><em>{{tarea.descripcion}}</em></td>
+                       <td>{{tarea.fecha | date:'yyyy-MM-dd'}}</td>
+                       <td>{{tarea.estado}}</td>
+                       <td>  {{tarea.valorUnitario}}</td>
+                       <td>{{tarea.valorTotal}}</td>
+                       <td><a class="btn btn-info btn-sm" [routerLink]="['/tareas/wear/mean', tarea._id, 'edit']">Edit</a></td>
+                       <td><a class="btn btn-danger btn-sm" (click)="deleteTarea(tarea._id)">-</a></td>
                     </tr>
               
                       </tbody>
                
             </table>
         </div>
-
-
     </div>
-</div>
+
+    
+
+
+    

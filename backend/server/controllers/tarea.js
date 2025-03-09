@@ -14,8 +14,6 @@ exports.list_all_tareas = function(req, res) {
     });
 };
 
-
-
 exports.create_tarea = async (req, res) => {
     try {
         // Elimina el campo `_id` si está presente en `req.body`
@@ -31,10 +29,6 @@ exports.create_tarea = async (req, res) => {
         res.status(500).send(error);
     }
 };
-
-//
-
-
 
 exports.read_tarea = async (req, res) => {
   try {
